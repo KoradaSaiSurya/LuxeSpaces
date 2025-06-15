@@ -2,10 +2,6 @@ body {
   margin: 0;
   padding: 0;
   background: linear-gradient(to right, #fff1f1, #f9f7ff);
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
   overflow-x: hidden;
 }
 
@@ -517,15 +513,12 @@ body {
 
 
 .services-section { 
-  padding: 60px 20px;
-  background: linear-gradient(to right, #f0e5ee, #f4f4f4);
+  padding: 80px 20px;
+ background: linear-gradient(to right, #efd1d1, #f9f7ff);
   align-items: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: 15px;
-  margin: 30px 10px;
 }
 
 .main-heading {
