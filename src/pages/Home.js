@@ -19,9 +19,8 @@ const Home = () => {
       <Navbar />
 
       <div className="home-container">
-        <video className="intro-video" autoPlay muted loop>
-          <source src="/images/intro.mp4" type="video/mp4" />
-        </video>
+        <img className="intro-video" 
+          source src='/images/livingroom.jpg' alt="intro" />
         <div className="overlay" />
         <div className="video-text">
           <h1>Transforming Spaces into Masterpieces</h1>
