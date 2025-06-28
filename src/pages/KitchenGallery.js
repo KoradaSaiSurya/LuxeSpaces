@@ -17,32 +17,32 @@ const kitchenItems = [
     cost: '₹65,000',
   },
   {
-    img: '/images/l-shape.avif',
+    img: '/images/greykitchen.jpg',
     title: 'L-Shaped Kitchen',
     cost: '₹90,000',
   },
   {
-    img: '/images/black-kitchen.webp',
+    img: '/images/wooden-kitchen.jpg',
     title: 'Matte Black Kitchen',
     cost: '₹88,000',
   },
   {
-    img: '/images/island-kitchen.webp',
+    img: '/images/white-kitchen.jpg',
     title: 'Island Modular Kitchen',
     cost: '₹88,000',
   },  
   {
-    img: '/images/blue-kitchen.avif',
+    img: '/images/wooden-kitchen.jpg',
     title: 'Royal Blue Kitchen',
     cost: '₹88,000',
   },
   {
-    img: '/images/vintage-kitchen.jpg',
+    img: '/images/white-kitchen.jpg',
     title: 'Vintage Style Kitchen',
     cost: '₹78,000',
   },
   {
-    img: '/images/glass-kitchen.jpg',
+    img: '/images/white-kitchen.jpg',
     title: 'Glass Finish Kitchen',
     cost: '₹1,25,000',
   },

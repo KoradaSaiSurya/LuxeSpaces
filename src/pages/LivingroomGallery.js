@@ -12,7 +12,7 @@ const livingRoomItems = [
     price: '₹85,000',
   },
   {
-    img: '/images/white-living.jpg',
+    img: '/images/style-living.jpg',
     title: 'Modern White Living Room',
     price: '₹95,000',
   },
@@ -32,7 +32,7 @@ const livingRoomItems = [
     price: '₹88,000',
   },
   {
-    img: '/images/luxury-living.webp',
+    img: '/images/style-living.jpg',
     title: 'Luxury Lounge Living',
     price: '₹1,25,000',
   },
@@ -42,7 +42,7 @@ const livingRoomItems = [
     price: '₹82,000',
   },
   {
-    img: '/images/space-living.jpg',
+    img: '/images/l-living.jpg',
     title: 'Open Space Living Room',
     price: '₹99,000',
   },

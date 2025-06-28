@@ -22,7 +22,7 @@ const servicesData = [
   {
     title: 'Wardrobe',
     description: 'Sliding wardrobe with mirror, shelves and internal lights.',
-    image: '/images/wardrobe.avif',
+    image: '/images/kidsroom.jpg',
     price: '₹ 65,000',
   },
   {

@@ -7,45 +7,46 @@ const bathroomItems = [
     price: '₹45,000',
   },
   {
-    img: '/images/wooden-bathroom.webp',
+    img: '/images/blue-bathroom.jpg',
     title: 'Wooden Vanity Bathroom',
     price: '₹55,000',
   },
   {
-    img: '/images/white-bathroom.avif',
+    img: '/images/grey-bathroom.jpg',
     title: 'Compact White Bathroom',
     price: '₹35,000',
   },
   {
-    img: '/images/black-bathroom.jpg',
+    img: '/images/blue-bathroom.jpg',
     title: 'Luxury Black Bathroom',
     price: '₹70,000',
   },
   {
-    img: '/images/l-bathroom.webp',
+    img: '/images/grey-bathroom.jpg',
     title: 'L-Shaped Bathroom',
     price: '₹52,000',
   },
   {
-    img: '/images/glass-bathroom.webp',
+    img: '/images/blue-bathroom.jpg',
     title: 'Glass Panel Bathroom',
     price: '₹65,000',
   },
   {
-    img: '/images/marble-bathroom.webp',
+    img: '/images/grey-bathroom.jpg',
     title: 'Marble Finish Bathroom',
     price: '₹80,000',
   },
-  {
-    img: '/images/vintage-bathroom.webp',
-    title: 'Vintage Bathroom',
-    price: '₹60,000',
-  },
-  {
+   {
     img: '/images/blue-bathroom.jpg',
     title: 'Royal Blue Bathroom',
     price: '₹58,000',
   },
+  {
+    img: '/images/grey-bathroom.jpg',
+    title: 'Vintage Bathroom',
+    price: '₹60,000',
+  },
+ 
 ];
 
 const BathroomGallery = () => {

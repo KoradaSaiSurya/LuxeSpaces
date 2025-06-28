@@ -5,25 +5,25 @@ const servicesData = [
   {
     title: ' 🍽️ Modular Kitchen',
     description: 'Modern modular kitchens with stylish storage, lighting, and smooth workflow.',
-    image: '/images/kitchen1.jpg',
+    image: '/images/vintage-kitchen.jpg',
     path: '/kitchenGallery'
   },
   {
     title: '🛋️ Living Room',
     description: 'Elegant and cozy living rooms with perfect color tones and sofa placements.',
-    image: '/images/livingroom.jpg',
+    image: '/images/vintage-kitchen.jpg',
     path: '/livingroomGallery'
   },
   {
     title: ' 🛏️ Bedroom',
     description: 'Peaceful bedrooms with ambient lighting and beautiful wardrobes.',
-    image: '/images/bedroom.avif',
+    image: '/images/vintage-kitchen.jpg',
     path: '/bedroomGallery'
   },
   {
     title: ' 🛁 Bathroom',
     description: 'Premium bathrooms with glass partitions, cabinets and LED mirrors.',
-    image: '/images/bathroom.jpg',
+    image: '/images/vintage-kitchen.jpg',
     path: '/bathroomGallery'
   },
 ];

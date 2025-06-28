@@ -12,7 +12,7 @@ const bedroomItems = [
     price: '₹80,000',
   },
   {
-    img: '/images/gold-bedroom.avif',
+    img:  '/images/blue-bedroom.jpg',
     title: 'Luxury Gold Bedroom',
     price: '₹1,20,000',
   },
@@ -22,7 +22,7 @@ const bedroomItems = [
     price: '₹65,000',
   },
   {
-    img: '/images/wooden-bedroom.jpg',
+    img:  '/images/blue-bedroom.jpg',
     title: 'Wood Finish Bedroom',
     price: '₹90,000',
   },
@@ -32,7 +32,7 @@ const bedroomItems = [
     price: '₹1,10,000',
   },
   {
-    img: '/images/kids-bedroom.avif',
+    img:  '/images/blue-bedroom.jpg',
     title: 'Kids Play Bedroom',
     price: '₹58,000',
   },
