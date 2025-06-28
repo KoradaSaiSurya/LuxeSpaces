@@ -17,20 +17,16 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-<div className="home-container">
-  <video className="intro-video" autoPlay muted loop>
-    <source src="/images/new-intro.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-
-  <div className="overlay" />
-  
-  <div className="video-text">
-    <h1>Transforming Spaces into Masterpieces</h1>
-    <p>Modern | Elegant | Minimalist</p>
-    <li><a href="/projects">Explore Our Projects</a></li>
-  </div>
-</div>
+     <div className="home-container">
+        <img className="intro-video" 
+           src ='/images/new-photo2.jpg' alt='img'/> 
+        <div className="overlay" />
+        <div className="video-text">
+          <h1>Transforming Spaces into Masterpieces</h1>
+          <p>Modern | Elegant | Minimalist</p>
+         <li> <a href="/projects" > Explore Our Projects </a> </li>
+        </div>
+      </div> 
 
 
 
