@@ -107,8 +107,9 @@ body {
     flex-direction: column;
     align-items: flex-start;
     margin: 0px;
-    padding: 0px;
+    padding: 10px;
   }
+
 
   .nav{
     margin: 0px;
@@ -145,6 +146,40 @@ body {
     top: -300px;
     position: relative;
   }
+
+  
+.interior-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.logo-mark {
+  background: linear-gradient(to right, #ffd700, #ffa500);
+  color: transparent;
+  -webkit-background-clip: text;
+  font-size: 19px;
+  font-weight: bold;
+  border: 2px solid #ffd700;
+  border-radius: 6px;
+  padding: 1px 8px;
+}
+
+.logo-name {
+
+ background: linear-gradient(to right, #ff5500, #ffa500);
+  color: transparent;
+  -webkit-background-clip: text;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 1px 8px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  filter: brightness(1.35);
+  display: flex;
+}
 }
 
 
@@ -497,10 +532,11 @@ body {
   }
 
   .testimonial-cards {
-    gap: 15px;
+    gap: 1px;
   }
 
   .testimonial {
+    margin-top: 20px;
     width: 90%;
     padding: 12px;
     font-size: 13px;
@@ -859,7 +895,6 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 @media (max-width: 768px) {
   .services-section-1 {
     padding: 40px 15px;
-    margin: 30px 10px;
   }
 
   .main-heading1 {
@@ -874,7 +909,7 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   .subtitle1 {
     font-size: 16px;
-    top: 30px;
+    top: 5px;
     margin-bottom: 30px;
   }
 
@@ -887,8 +922,8 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   .pro {
     grid-template-columns: 1fr;
-    gap: 30px;
-    margin: 30px 10px;
+    gap: 70px;
+    margin: 30px -20px;
     padding: 20px;
   }
 
@@ -905,7 +940,7 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 
   .text-box1 {
-    max-width: 100%;
+    width: 100%;
     padding: 10px;
   }
 
@@ -1019,12 +1054,12 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 
   .about-tagline {
-    font-size: 15px;
+    font-size: 1px;
     margin-bottom: 25px;
   }
 
   .about-content p {
-    font-size: 15px;
+    font-size: 10px;
     margin-bottom: 20px;
   }
 

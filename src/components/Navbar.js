@@ -17,7 +17,7 @@ const Navbar = () => {
     <div className='nav'>
       <div className='nav-container'>
 
-        {/* Logo + Hamburger side by side */}
+       
         <div className='logo-and-icon'>
           <Link to="/home" className="interior-logo">
             <span className="logo-mark">DS</span>
@@ -29,7 +29,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Nav Links */}
+     
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <li><Link to="/home" onClick={closeMenu}>Home</Link></li>
           <li><Link to="/projects" onClick={closeMenu}>Projects</Link></li>

@@ -60,7 +60,7 @@ const Projects = () => {
               <p1>{service.description}</p1>
               <h3 style={{ color: 'black', fontSize: '25px' }}>{service.price}</h3>
             </div>
-            <div className="card-number">{index + 1}</div> {/* 👈 Number Added */}
+            <div className="card-number">{index + 1}</div> 
           </div>
         ))}
       </div>
