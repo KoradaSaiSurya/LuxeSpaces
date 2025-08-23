@@ -35,11 +35,14 @@ const Services = () => {
       <h1 className="main-heading">Transforming Spaces into Masterpieces</h1>
       <p className="subtitle">Our expert services include:</p>
 
+     
+
       {servicesData.map((service, index) => (
         <div
           key={index}
           className={`service-box ${index % 2 === 0 ? 'row' : 'row reverse'}`}
         >
+          
           <div className="video-box">
             <img src={service.image} alt={service.title} />
           </div>
@@ -50,7 +53,9 @@ const Services = () => {
            <Link to={service.path}> <button className="show-btn" >
               Show Designs <span className="arrow">➜</span> 
             </button>
-            </Link> 
+            </Link>
+
+          
 
           </div>
         </div>

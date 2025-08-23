@@ -57,7 +57,7 @@ const Projects = () => {
             </div>
             <div className="text-box1">
               <h2>{service.title}</h2>
-              <p1>{service.description}</p1>
+              <p>{service.description}</p>
               <h3 style={{ color: 'black', fontSize: '25px' }}>{service.price}</h3>
             </div>
             <div className="card-number">{index + 1}</div> 
