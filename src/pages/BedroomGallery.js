@@ -1,74 +1,100 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const bedroomItems = [
+const kitchenItems = [
   {
     img: '/images/blue-bedroom.jpg',
-    title: 'Classic Blue Bedroom',
-    price: '₹70,000',
+    title: 'Modern Blue Bedroom',
+    cost: '₹75,000',
+    warranty: '10 Years Warranty',
+    material: 'Premium Plywood + Granite',
+    delivery: 'Free Delivery & Installation'
   },
   {
     img: '/images/modern-bedroom.jpg',
     title: 'Modern Minimal Bedroom',
-    price: '₹80,000',
+    cost: '₹85,000',
+    warranty: '8 Years Warranty',
+    material: 'Solid Wood Finish',
+    delivery: 'Delivery within 15 Days'
   },
   {
-    img:  '/images/blue-bedroom.jpg',
+    img: '/images/blue-bedroom.jpg',
     title: 'Luxury Gold Bedroom',
-    price: '₹1,20,000',
+    cost: '₹65,000',
+    warranty: '5 Years Warranty',
+    material: 'Glossy White Laminate',
+    delivery: 'Free Delivery'
   },
   {
     img: '/images/pastal-bedroom.jpg',
     title: 'Pastel Theme Bedroom',
-    price: '₹65,000',
+    cost: '₹90,000',
+    warranty: '12 Years Warranty',
+    material: 'Matte Finish Panels',
+    delivery: 'Free Delivery & Installation'
   },
   {
-    img:  '/images/blue-bedroom.jpg',
+    img: '/images/blue-bedroom.jpg',
     title: 'Wood Finish Bedroom',
-    price: '₹90,000',
+    cost: '₹88,000',
+    warranty: '10 Years Warranty',
+    material: 'High-Quality MDF',
+    delivery: 'Fast Delivery'
   },
   {
-    img: '/images/purple-bedroom.jpeg',
-    title: 'Royal Purple Bedroom',
-    price: '₹1,10,000',
-  },
-  {
-    img:  '/images/blue-bedroom.jpg',
-    title: 'Kids Play Bedroom',
-    price: '₹58,000',
-  },
-  {
-    img: '/images/studio-bedroom.jpg',
-    title: 'Studio Style Bedroom',
-    price: '₹95,000',
-  },
-  {
-    img: '/images/green-bedroom.jpg',
+     img: '/images/green-bedroom.jpg',
     title: 'Green Natural Bedroom',
-    price: '₹88,000',
-  },
+    cost: '₹88,000',
+    warranty: '15 Years Warranty',
+    material: 'Imported Laminates',
+    delivery: 'Premium Support'
+  }
 ];
 
 const BedroomGallery = () => {
+  const [selectedItem, setSelectedItem] = useState(null);
+
   return (
     <div className="kitchen-gallery">
       <h1>Bedroom Designs</h1>
 
-         <ul className='design-btn'>
+      <ul className='design-btn'>
         <li><a href="/kitchenGallery">Kitchen Designs</a> </li>
-        <li><a href="/livingroomGallery">Living Room Designs</a></li>
+        <li><a href="/livingroomGallery">Living Designs</a></li>
         <li><a href="/bedroomGallery">Bedroom Designs</a></li>
         <li><a href="/bathroomGallery">Bathroom Designs</a></li>
      </ul>
 
       <div className="kitchen-grid">
-        {bedroomItems.map((item, index) => (
-          <div className="kitchen-card" key={index}>
+        {kitchenItems.map((item, index) => (
+          <div 
+            className="kitchen-card" 
+            key={index} 
+            onClick={() => setSelectedItem(item)}
+          >
             <img src={item.img} alt={item.title} />
-            <h3>{item.title}</h3>
-            <p>{item.price}</p>
+            <div className="card-info">
+              <h3>{item.title}</h3>
+              <p>{item.cost}</p>
+            </div>
           </div>
         ))}
       </div>
+
+      {/* Modal Popup */}
+      {selectedItem && (
+        <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <img src={selectedItem.img} alt={selectedItem.title} />
+            <h2>{selectedItem.title}</h2>
+            <p><b>Cost:</b> {selectedItem.cost}</p>
+            <p><b>Warranty:</b> {selectedItem.warranty}</p>
+            <p><b>Material:</b> {selectedItem.material}</p>
+            <p><b>Delivery:</b> {selectedItem.delivery}</p>
+            <button className="close-btn" onClick={() => setSelectedItem(null)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

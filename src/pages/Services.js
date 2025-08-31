@@ -109,41 +109,48 @@
 
 
 
-
-
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
-      icon: 'fas fa-home',
-      title: 'Residential Design',
-      description: 'Complete home makeovers from concept to completion. We transform your living spaces into beautiful, functional environments.'
+      icon: 'fas fa-utensils',
+      title: 'Modular Kitchen',
+      description: 'Modern modular kitchen designs with stylish layouts and maximum space.',
+      link: '/kitchenGallery'
     },
     {
-      icon: 'fas fa-building',
-      title: 'Commercial Spaces',
-      description: 'Professional office and retail space design that enhances productivity and creates memorable customer experiences.'
+      icon: 'fas fa-bath',
+      title: 'Luxury Bathrooms',
+      description: 'Transform your bathroom into a luxurious, spa-like retreat with smart fittings.',
+      link: '/bathroomGallery'
+    },
+    {
+      icon: 'fas fa-bed',
+      title: 'Elegant Bedrooms',
+      description: 'Beautiful bedroom interiors designed for comfort, peace, and style.',
+      link: '/bedroomGallery'
     },
     {
       icon: 'fas fa-couch',
-      title: 'Furniture Selection',
-      description: 'Curated furniture and decor selection that perfectly complements your space and reflects your personal style.'
+      title: 'Living Rooms',
+      description: 'Cozy and stylish living rooms designed for family gatherings and relaxation.',
+      link: '/livingroomGallery'
     },
     {
-      icon: 'fas fa-palette',
-      title: 'Color Consultation',
-      description: 'Expert color schemes and paint selection to create the perfect ambiance and mood for every room.'
+      icon: 'fas fa-chair',
+      title: 'Dining Spaces',
+      description: 'Elegant dining areas crafted with perfect lighting and modern furniture.',
+      link: '/livingroomGallery'
     },
     {
-      icon: 'fas fa-lightbulb',
-      title: 'Lighting Design',
-      description: 'Strategic lighting solutions that enhance your space\'s functionality while creating beautiful atmospheres.'
-    },
-    {
-      icon: 'fas fa-ruler-combined',
-      title: 'Space Planning',
-      description: 'Optimal space utilization and layout planning to maximize functionality and flow in any environment.'
+      icon: 'fas fa-tree',
+      title: 'Balcony & Outdoor',
+      description: 'Beautiful balcony and outdoor setups with greenery and relaxing vibes.',
+      link: '/livingroomGallery'
     }
   ];
 
@@ -162,6 +169,14 @@ const Services = () => {
               </div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
+
+              {/* Navigate to respective gallery */}
+              <button 
+                className="show-btn"
+                onClick={() => navigate(service.link)}
+              >
+                Show Designs <span className="arrow">➜</span>
+              </button>
             </div>
           ))}
         </div>

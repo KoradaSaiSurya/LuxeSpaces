@@ -89,26 +89,20 @@
 
 
 
-
-
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
-const Navbar = ({ currentPage, onPageChange }) => {
+const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'services', label: 'Services' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'about', label: 'About' },
-    { id: 'why-choose', label: 'Why Choose Us' },
-    { id: 'contact', label: 'Contact' }
+    { path: '/', label: 'Home' },
+    { path: '/services', label: 'Services' },
+    { path: '/projects', label: 'Projects' },
+    { path: '/about', label: 'About' },
+    { path: '/why-choose', label: 'Why Choose Us' },
+    { path: '/contact', label: 'Contact' }
   ];
-
-  const handleNavClick = (pageId) => {
-    onPageChange(pageId);
-    setIsMobileMenuOpen(false);
-  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -117,20 +111,20 @@ const Navbar = ({ currentPage, onPageChange }) => {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <a href="#" className="logo" onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}>
+        <NavLink to="/" className="logo">
           LuxeSpaces
-        </a>
+        </NavLink>
         
         <ul className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
           {navItems.map(item => (
-            <li key={item.id}>
-              <a
-                href="#"
-                className={`nav-link ${currentPage === item.id ? 'active' : ''}`}
-                onClick={(e) => { e.preventDefault(); handleNavClick(item.id); }}
+            <li key={item.path}>
+              <NavLink
+                to={item.path}
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -146,4 +140,3 @@ const Navbar = ({ currentPage, onPageChange }) => {
 };
 
 export default Navbar;
-

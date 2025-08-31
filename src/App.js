@@ -82,9 +82,9 @@
 
 
 
-
-
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Home from './pages/Home';
 import Services from './pages/Services';
 import About from './pages/About';
@@ -92,14 +92,14 @@ import WhyChoose from './pages/WhyChoose';
 import Contact from './pages/Contact';
 import PasswordModal from './components/PasswordModal';
 import Projects from './pages/Projects';
-
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import KitchenGallery from './pages/KitchenGallery';
+import BedroomGallery from './pages/BedroomGallery';
+import BathroomGallery from './pages/BathroomGallery';
+import LivingroomGallery from './pages/LivingroomGallery'
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [showPasswordModal, setShowPasswordModal] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [projects, setProjects] = useState([
     {
       id: 1,
@@ -124,25 +124,24 @@ function App() {
     }
   ]);
 
-  // Load projects from localStorage on component mount
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Load projects from localStorage
   useEffect(() => {
     const savedProjects = localStorage.getItem('luxeSpacesProjects');
     if (savedProjects) {
       const parsedProjects = JSON.parse(savedProjects);
-      setProjects(prevProjects => [...prevProjects, ...parsedProjects]);
+      setProjects(prev => [...prev, ...parsedProjects]);
     }
   }, []);
 
   // Save projects to localStorage
   const saveProject = (project) => {
     const savedProjects = localStorage.getItem('luxeSpacesProjects');
-    const existingProjects = savedProjects ? JSON.parse(savedProjects) : [];
-    const updatedProjects = [...existingProjects, project];
-    localStorage.setItem('luxeSpacesProjects', JSON.stringify(updatedProjects));
-  };
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
+    const existing = savedProjects ? JSON.parse(savedProjects) : [];
+    const updated = [...existing, project];
+    localStorage.setItem('luxeSpacesProjects', JSON.stringify(updated));
   };
 
   const handleAddProject = () => {
@@ -169,58 +168,44 @@ function App() {
       ...projectData,
       timestamp: new Date().toISOString()
     };
-    
-    setProjects(prevProjects => [...prevProjects, newProject]);
+
+    setProjects(prev => [...prev, newProject]);
     saveProject(newProject);
-    setIsAuthenticated(false); // Reset authentication after each upload
+    setIsAuthenticated(false);
   };
 
-  const renderCurrentPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return <Home onNavigate={handlePageChange} />;
-      case 'services':
-        return <Services />;
-      case 'projects':
-        return (
+  return (
+    <Router>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/projects" element={
           <Projects 
             projects={projects}
             onAddProject={handleAddProject}
             onProjectSubmit={addProject}
             isAuthenticated={isAuthenticated}
           />
-        );
-      case 'about':
-        return <About />;
-      case 'why-choose':
-        return <WhyChoose />;
-      case 'contact':
-        return <Contact />;
-      default:
-        return <Home onNavigate={handlePageChange} />;
-    }
-  };
+        } />
+        <Route path="/about" element={<About />} />
+        <Route path="/why-choose" element={<WhyChoose />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path='/kitchenGallery' element={<KitchenGallery />} />
+        <Route path='/bathroomGallery' element={<BathroomGallery />} />
+        <Route path='/bedroomGallery' element={<BedroomGallery />} />
+        <Route path='/livingroomGallery' element={<LivingroomGallery />} />
+      </Routes>
 
-  return (
-    <div className="App">
-      <Navbar 
-        currentPage={currentPage} 
-        onPageChange={handlePageChange} 
-      />
-      
-      
-      {renderCurrentPage()}
-      
       <PasswordModal
         show={showPasswordModal}
         onSuccess={handlePasswordSuccess}
         onCancel={handlePasswordCancel}
       />
 
-       <Footer />
-    </div>
-  
-
+      <Footer />
+    </Router>
   );
 }
 
