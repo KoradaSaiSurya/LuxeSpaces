@@ -328,73 +328,117 @@ function Projects() {
   const [price, setPrice] = useState("");
   const [content, setContent] = useState("");
 
+  // Render backend URL
+  const BACKEND_URL = "https://interior-backend-1.onrender.com"; // <-- replace with your Render URL if different
+
   // Fetch projects
   useEffect(() => {
-    fetch("http://localhost:5000/api/projects")
+    fetch(`${BACKEND_URL}/api/projects`)
       .then((res) => res.json())
-      .then((data) => setProjects(data));
+      .then((data) => setProjects(data))
+      .catch((err) => console.log(err));
   }, []);
 
   // Upload project
   const handleUpload = async (e) => {
     e.preventDefault();
+    if (!file) return alert("Please select a file");
+
     const formData = new FormData();
     formData.append("image", file);
     formData.append("price", price);
     formData.append("content", content);
 
-    const res = await fetch("http://localhost:5000/api/projects", {
-      method: "POST",
-      body: formData,
-    });
-
-    const newProject = await res.json();
-    setProjects([...projects, newProject]);
-    setFile(null);
-    setPrice("");
-    setContent("");
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/projects`, {
+        method: "POST",
+        body: formData,
+      });
+      const newProject = await res.json();
+      setProjects([...projects, newProject]);
+      setFile(null);
+      setPrice("");
+      setContent("");
+    } catch (err) {
+      console.log(err);
+      alert("Upload failed");
+    }
   };
 
   // Delete project
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:5000/api/projects/${id}`, { method: "DELETE" });
-    setProjects(projects.filter((p) => p._id !== id));
+    try {
+      await fetch(`${BACKEND_URL}/api/projects/${id}`, { method: "DELETE" });
+      setProjects(projects.filter((p) => p._id !== id));
+    } catch (err) {
+      console.log(err);
+      alert("Delete failed");
+    }
   };
 
   return (
     <div className="pro">
-    <div style={{ width: "80%", margin: "auto" }}>
-      <form onSubmit={handleUpload} style={{ margin: "20px 0", textAlign: "center" }}>
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} required />
-        <input 
-          type="number" 
-          placeholder="Price" 
-          value={price} 
-          onChange={(e) => setPrice(e.target.value)} 
-          required 
-        />
-        <input 
-          type="text" 
-          placeholder="Content" 
-          value={content} 
-          onChange={(e) => setContent(e.target.value)} 
-          required 
-        />
-        <button type="submit">Upload</button>
-      </form>
+      <div style={{ width: "80%", margin: "auto" }}>
+        <form onSubmit={handleUpload} style={{ margin: "20px 0", textAlign: "center" }}>
+          <input type="file" onChange={(e) => setFile(e.target.files[0])} required />
+          <input
+            type="number"
+            placeholder="Price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            required
+          />
+          <button type="submit">Upload</button>
+        </form>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "20px" }}>
-        {projects.map((p) => (
-          <div key={p._id} style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "10px", textAlign: "center" }}>
-            <img src={`http://localhost:5000${p.imageUrl}`} alt="uploaded" style={{ width: "100%", borderRadius: "10px" }} />
-            <h3>₹{p.price}</h3>
-            <p>{p.content}</p>
-            <button onClick={() => handleDelete(p._id)} style={{ background: "red", color: "white", border: "none", padding: "5px 10px", cursor: "pointer" }}>Delete</button>
-          </div>
-        ))}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+            gap: "20px",
+          }}
+        >
+          {projects.map((p) => (
+            <div
+              key={p._id}
+              style={{
+                border: "1px solid #ccc",
+                borderRadius: "10px",
+                padding: "10px",
+                textAlign: "center",
+              }}
+            >
+              <img
+                src={`${BACKEND_URL}${p.imageUrl}`}
+                alt="uploaded"
+                style={{ width: "100%", borderRadius: "10px" }}
+              />
+              <h3>₹{p.price}</h3>
+              <p>{p.content}</p>
+              <button
+                onClick={() => handleDelete(p._id)}
+                style={{
+                  background: "red",
+                  color: "white",
+                  border: "none",
+                  padding: "5px 10px",
+                  cursor: "pointer",
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
-     </div>
   );
 }
 
