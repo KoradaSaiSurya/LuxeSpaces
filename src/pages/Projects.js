@@ -108,7 +108,7 @@ function Projects() {
               <img src={p.imageUrl} alt={p.title} />
             </div>
             <div className="product-details">
-              <h3 className="product-title">{p.title}</h3>
+              <p className="product-title">{p.title}</p>
               <p className="product-desc">{p.content}  </p>
               <div className="product-rating">⭐⭐⭐⭐⭐</div>
               <div className="product-price">₹{p.price.toLocaleString()}</div>

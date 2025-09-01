@@ -79,9 +79,6 @@
 
 // export default App;
 
-
-
-
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -97,7 +94,7 @@ import Footer from './components/Footer';
 import KitchenGallery from './pages/KitchenGallery';
 import BedroomGallery from './pages/BedroomGallery';
 import BathroomGallery from './pages/BathroomGallery';
-import LivingroomGallery from './pages/LivingroomGallery'
+import LivingroomGallery from './pages/LivingroomGallery';
 
 function App() {
   const [projects, setProjects] = useState([
@@ -106,21 +103,21 @@ function App() {
       name: 'Modern Living Room',
       price: 15000,
       description: 'Contemporary design with clean lines and neutral tones',
-      image: null
+      image: '/images/livingroom.jpg'   // ✅ image add chesam
     },
     {
       id: 2,
       name: 'Luxury Bedroom Suite',
       price: 12500,
       description: 'Elegant master bedroom with custom furniture',
-      image: null
+      image: '/images/bedroom.jpg'   // ✅ image add chesam
     },
     {
       id: 3,
       name: 'Executive Office',
       price: 20000,
       description: 'Professional workspace design for productivity',
-      image: null
+      image: '/images/office.jpg'   // ✅ image add chesam
     }
   ]);
 
@@ -181,21 +178,24 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/projects" element={
-          <Projects 
-            projects={projects}
-            onAddProject={handleAddProject}
-            onProjectSubmit={addProject}
-            isAuthenticated={isAuthenticated}
-          />
-        } />
+        <Route
+          path="/projects"
+          element={
+            <Projects
+              projects={projects}
+              onAddProject={handleAddProject}
+              onProjectSubmit={addProject}
+              isAuthenticated={isAuthenticated}
+            />
+          }
+        />
         <Route path="/about" element={<About />} />
         <Route path="/why-choose" element={<WhyChoose />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path='/kitchenGallery' element={<KitchenGallery />} />
-        <Route path='/bathroomGallery' element={<BathroomGallery />} />
-        <Route path='/bedroomGallery' element={<BedroomGallery />} />
-        <Route path='/livingroomGallery' element={<LivingroomGallery />} />
+        <Route path="/kitchenGallery" element={<KitchenGallery />} />
+        <Route path="/bathroomGallery" element={<BathroomGallery />} />
+        <Route path="/bedroomGallery" element={<BedroomGallery />} />
+        <Route path="/livingroomGallery" element={<LivingroomGallery />} />
       </Routes>
 
       <PasswordModal
