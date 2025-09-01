@@ -125,7 +125,7 @@ const Services = () => {
     {
       icon: 'fas fa-bath',
       title: 'Luxury Bathrooms',
-      description: 'Transform your bathroom into a luxurious, spa-like retreat with smart fittings.',
+      description: 'Transform your bathroom into a luxurious, spa-like retreat with fittings.',
       link: '/bathroomGallery'
     },
     {

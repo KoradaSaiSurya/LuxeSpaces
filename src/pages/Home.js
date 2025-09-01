@@ -114,6 +114,9 @@ import React from 'react';
 import WhyChoose from './WhyChoose';
 import Services from './Services';
 import Contact from './Contact';
+// import { useNavigate } from 'react-router-dom';
+
+// const onNavigate =useNavigate()
 
 const Home = ({ onNavigate }) => {
   return (
