@@ -30,28 +30,39 @@ function Projects() {
   };
 
   const confirmUpload = async () => {
-    const formData = new FormData();
-    formData.append("image", file);
-    formData.append("title", title);
-    formData.append("price", price);
-    formData.append("content", content);
+  const formData = new FormData();
+  formData.append("image", file);
+  formData.append("title", title);
+  formData.append("price", Number(price)); // ✅ convert number
+  formData.append("content", content);
 
-    try {
-      const res = await fetch(`${BACKEND_URL}/api/projects`, {
-        method: "POST",
-        body: formData,
-      });
-      const newProject = await res.json();
-      setProjects([...projects, newProject]);
-      setFile(null);
-      setTitle("");
-      setPrice("");
-      setContent("");
-    } catch (err) {
-      console.log(err);
-      alert("Upload failed");
+  console.log("Uploading file:", file); // ✅ Debug log
+
+  try {
+    const res = await fetch(`${BACKEND_URL}/api/projects`, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!res.ok) {
+      const errData = await res.json();
+      alert("Upload failed: " + errData.message);
+      return;
     }
-  };
+
+    const newProject = await res.json();
+    setProjects([...projects, newProject]);
+    setFile(null);
+    setTitle("");
+    setPrice("");
+    setContent("");
+  } catch (err) {
+    console.log(err);
+    alert("Upload failed: " + err.message);
+  }
+};
+
+
 
   const handleDelete = (id) => {
     setPendingAction("delete");
@@ -108,7 +119,8 @@ function Projects() {
               <img src={p.imageUrl} alt={p.title} />
             </div>
             <div className="product-details">
-              <p className="product-title">{p.title}</p>
+              <p className="product-title">{p.title} </p>
+
               <p className="product-desc">{p.content}  </p>
               <div className="product-rating">⭐⭐⭐⭐⭐</div>
               <div className="product-price">₹{p.price.toLocaleString()}</div>
