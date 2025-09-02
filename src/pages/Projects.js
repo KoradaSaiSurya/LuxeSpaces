@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ navigation
 
 function Projects() {
   const [projects, setProjects] = useState([]);
@@ -6,15 +7,12 @@ function Projects() {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [content, setContent] = useState("");
-  const [showPasswordModal, setShowPasswordModal] = useState(false);
-  const [password, setPassword] = useState("");
-  const [pendingAction, setPendingAction] = useState(null);
-  const [deleteId, setDeleteId] = useState(null);
   const [lightbox, setLightbox] = useState({ open: false, imgUrl: "" });
 
   const BACKEND_URL = "https://interior-backend-1.onrender.com";
-  const SECRET_PASSWORD = "admin123";
+  const navigate = useNavigate(); // ✅ navigation hook
 
+  // ✅ Fetch projects
   useEffect(() => {
     fetch(`${BACKEND_URL}/api/projects`)
       .then((res) => res.json())
@@ -22,91 +20,69 @@ function Projects() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleUpload = (e) => {
+  // ✅ Upload
+  const handleUpload = async (e) => {
     e.preventDefault();
     if (!file) return alert("Please select a file");
-    setPendingAction("upload");
-    setShowPasswordModal(true);
-  };
 
-  const confirmUpload = async () => {
-  const formData = new FormData();
-  formData.append("image", file);
-  formData.append("title", title);
-  formData.append("price", Number(price)); // ✅ convert number
-  formData.append("content", content);
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("title", title);
+    formData.append("price", Number(price));
+    formData.append("content", content);
 
-  console.log("Uploading file:", file); // ✅ Debug log
-
-  try {
-    const res = await fetch(`${BACKEND_URL}/api/projects`, {
-      method: "POST",
-      body: formData,
-    });
-
-    if (!res.ok) {
-      const errData = await res.json();
-      alert("Upload failed: " + errData.message);
-      return;
-    }
-
-    const newProject = await res.json();
-    setProjects([...projects, newProject]);
-    setFile(null);
-    setTitle("");
-    setPrice("");
-    setContent("");
-  } catch (err) {
-    console.log(err);
-    alert("Upload failed: " + err.message);
-  }
-};
-
-
-
-  const handleDelete = (id) => {
-    setPendingAction("delete");
-    setDeleteId(id);
-    setShowPasswordModal(true);
-  };
-
-  const confirmDelete = async () => {
     try {
-      await fetch(`${BACKEND_URL}/api/projects/${deleteId}`, {
+      const res = await fetch(`${BACKEND_URL}/api/projects`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const errData = await res.json();
+        alert("Upload failed: " + errData.message);
+        return;
+      }
+
+      const newProject = await res.json();
+      setProjects([...projects, newProject]);
+
+      // reset form
+      setFile(null);
+      setTitle("");
+      setPrice("");
+      setContent("");
+    } catch (err) {
+      console.log(err);
+      alert("Upload failed: " + err.message);
+    }
+  };
+
+  // ✅ Delete
+  const handleDelete = async (id) => {
+    try {
+      await fetch(`${BACKEND_URL}/api/projects/${id}`, {
         method: "DELETE",
       });
-      setProjects(projects.filter((p) => p._id !== deleteId));
+      setProjects(projects.filter((p) => p._id !== id));
     } catch (err) {
       console.log(err);
       alert("Delete failed");
     }
   };
 
-  const handlePasswordSubmit = () => {
-    if (password === SECRET_PASSWORD) {
-      if (pendingAction === "upload") confirmUpload();
-      if (pendingAction === "delete") confirmDelete();
-      setShowPasswordModal(false);
-      setPassword("");
-      setPendingAction(null);
-    } else {
-      alert("❌ Incorrect Password!");
-    }
-  };
-
-  const closeModal = () => {
-    setShowPasswordModal(false);
-    setPassword("");
-    setPendingAction(null);
-    setDeleteId(null);
-  };
-
+  // ✅ Lightbox
   const openLightbox = (imgUrl) => setLightbox({ open: true, imgUrl });
   const closeLightbox = () => setLightbox({ open: false, imgUrl: "" });
 
   return (
     <div className="projects-container">
-      <h1 className="main-heading">✨ Our Projects ✨</h1>
+      {/* Heading + Back Button */}
+      <div className="header-row">
+        <button className="back-btn" onClick={() => navigate("/project2")}>
+          ⤶ 
+        </button>
+        <h1 className="main-heading">✨ Add Projects ✨</h1>
+      </div>
 
       {/* Projects Grid */}
       <div className="projects-grid">
@@ -119,11 +95,12 @@ function Projects() {
               <img src={p.imageUrl} alt={p.title} />
             </div>
             <div className="product-details">
-              <p className="product-title">{p.title} </p>
-
-              <p className="product-desc">{p.content}  </p>
+              <p className="product-title">{p.title}</p>
+              <p className="product-desc">{p.content}</p>
               <div className="product-rating">⭐⭐⭐⭐⭐</div>
               <div className="product-price">₹{p.price.toLocaleString()}</div>
+
+              {/* Delete Button */}
               <button
                 className="luxe-btn"
                 onClick={() => handleDelete(p._id)}
@@ -135,38 +112,16 @@ function Projects() {
         ))}
       </div>
 
-      {/* Password Modal */}
-      {showPasswordModal && (
-        <div
-          className="modal-overlay show"
-          onClick={(e) =>
-            e.target === e.currentTarget && closeModal()
-          }
-        >
-          <div className="modal-content">
-            <h3>🔐 Admin Access Required</h3>
-            <input
-              type="password"
-              placeholder="Enter admin password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <div className="modal-buttons">
-              <button className="btn-confirm" onClick={handlePasswordSubmit}>
-                Confirm
-              </button>
-              <button className="btn-cancel" onClick={closeModal}>
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Lightbox */}
       {lightbox.open && (
-        <div className="image-modal" onClick={closeLightbox}>
-          <img src={lightbox.imgUrl} alt="Project" />
+        <div className="modal-overlay" onClick={closeLightbox}>
+          <div className="modal-image-box">
+            <img
+              src={lightbox.imgUrl}
+              alt="Project"
+              onClick={closeLightbox}
+            />
+          </div>
         </div>
       )}
 
@@ -181,7 +136,7 @@ function Projects() {
               required
             />
           </div>
-          
+
           <div className="form-group">
             <input
               type="text"

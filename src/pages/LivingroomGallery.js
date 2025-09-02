@@ -71,7 +71,8 @@ const LivingroomGallery = () => {
 
   return (
     <div className="kitchen-gallery">
-      <h1>Livingroom Designs</h1>
+      <h1>LivingRoom Designs</h1>
+      <p> Living rooms that welcome, inspire, and bring families together.</p>
 
       <ul className='design-btn'>
         <li><a href="/kitchenGallery">Kitchen Designs</a> </li>
@@ -90,7 +91,10 @@ const LivingroomGallery = () => {
             <img src={item.img} alt={item.title} />
             <div className="card-info">
               <h3>{item.title}</h3>
-              <p>{item.cost}</p>
+              <p className='cost' style={{ fontSize: "20px", fontWeight: "bold", color: "#f50606ff" }}>{item.cost}</p>
+              <p>{item.warranty}</p>
+              <p>{item.material}</p>
+              <p>{item.delivery}</p>
             </div>
           </div>
         ))}
@@ -98,20 +102,16 @@ const LivingroomGallery = () => {
 
       {/* Modal Popup */}
       {selectedItem && (
-        <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <img src={selectedItem.img} alt={selectedItem.title} />
-            <h2>{selectedItem.title}</h2>
-            <p><b>Cost:</b> {selectedItem.cost}</p>
-            <p><b>Warranty:</b> {selectedItem.warranty}</p>
-            <p><b>Material:</b> {selectedItem.material}</p>
-            <p><b>Delivery:</b> {selectedItem.delivery}</p>
-            <button className="close-btn" onClick={() => setSelectedItem(null)}>Close</button>
-          </div>
-        </div>
-      )}
+  <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
+    <div className="modal-image-box" onClick={(e) => e.stopPropagation()}>
+     
+      <button className="close-btn" onClick={() => setSelectedItem(null)}> <img src={selectedItem.img} alt={selectedItem.title} /></button>
+    </div>
+  </div>
+)}
+
+      
     </div>
   );
 };
-
 export default LivingroomGallery;

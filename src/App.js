@@ -95,6 +95,7 @@ import KitchenGallery from './pages/KitchenGallery';
 import BedroomGallery from './pages/BedroomGallery';
 import BathroomGallery from './pages/BathroomGallery';
 import LivingroomGallery from './pages/LivingroomGallery';
+import Project2 from './pages/Project2';
 
 function App() {
   const [projects, setProjects] = useState([
@@ -196,6 +197,8 @@ function App() {
         <Route path="/bathroomGallery" element={<BathroomGallery />} />
         <Route path="/bedroomGallery" element={<BedroomGallery />} />
         <Route path="/livingroomGallery" element={<LivingroomGallery />} />
+        <Route path="/project2" element={<Project2 />} />
+
       </Routes>
 
       <PasswordModal
