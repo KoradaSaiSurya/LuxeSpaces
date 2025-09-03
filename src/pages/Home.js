@@ -107,38 +107,116 @@
 // export default Home;
 
 
-
-
-
-import React from 'react';
-import WhyChoose from './WhyChoose';
-import Services from './Services';
-import Contact from './Contact';
+// import React from 'react';
 // import { useNavigate } from 'react-router-dom';
+// import WhyChoose from './WhyChoose';
+// import Services from './Services';
+// import Contact from './Contact';
 
-// const onNavigate =useNavigate()
+// const Home = () => {
+//   const navigate = useNavigate();
 
-const Home = ({ onNavigate }) => {
+//   return (
+//     <section className="page-section active">
+//       <div className="hero">
+
+//         {/* 🔥 Background Video */}
+//         <video
+//           className="background-video"
+//           autoPlay
+//           muted
+//           loop
+//           playsInline
+//         >
+//           <source src="/images/new-intro.mp4" type="video/mp4" />
+//           Your browser does not support the video tag.
+//         </video>
+
+//         {/* 🔥 Overlay for Stylish Dark Effect */}
+//         <div className="overlay"></div>
+
+//         {/* 🔥 Content on Top of Video */}
+//         <div className="hero-content">
+//           <h1 className="hero-title">Transforming Spaces Into Masterpieces</h1>
+//           <p className="hero-subtitle">
+//            Modern | Elegant | Minimalist
+//           </p>
+//           <button 
+//             className="cta-button"
+//             onClick={() => navigate('/contact')}
+//           >
+//             Get Started Today
+//           </button>
+//         </div>
+//       </div>
+
+//       {/* Other Sections */}
+//       <WhyChoose />
+//       <Services />
+//       <Contact />
+//     </section>
+//   );
+// };
+
+// export default Home;
+
+
+
+
+
+
+
+
+
+
+
+
+import React from 'react'
+import Navbar from '../components/Navbar'
+import WhyChoose from './WhyChoose'
+import Services from './Services'
+import About from './About'
+import Project2 from './Project2'
+
+const Home = () => {
+
   return (
-    <section className="page-section active">
-      <div className="hero">
-        <div className="hero-content">
-          <h1>Transform Your Space</h1>
-          <p>Premium Interior Design Solutions for Modern Living</p>
-          <button 
-            className="cta-button"
-            onClick={() => onNavigate('contact')}
-          >
-            Get Started Today
-          </button>
-        </div>
-      </div>
-      <WhyChoose />
-      <Services />
-      <Contact />
-      
-    </section>
-  );
-};
+    <div>
+      <Navbar />
+     <div className="home-container">
+       <video
+          className="home-intro-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="/images/new-intro.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video> 
 
-export default Home;
+        <div className="overlay" />
+        <div className="video-text">
+          <h1>Transforming Spaces into Masterpieces</h1>
+          <p>Modern | Elegant | Minimalist</p>
+         <li> <a href="/projects" > Explore Our Projects </a> </li>
+        </div>
+      </div> 
+
+
+
+
+   
+      <WhyChoose />
+      <Project2 />
+      
+      <Services />
+      <About />
+      
+    
+
+    </div>
+  )
+}
+
+export default Home
