@@ -70,9 +70,12 @@ const WhyChoose = () => {
     <section className="page-section active">
       <div className="container">
         <div className="section-header">
-          <h2>Why Choose LuxeSpaces</h2>
-          <p>Discover what makes us the preferred choice for interior design excellence</p>
-        </div>
+  <h2 className='why-h2'>
+    <i className="fas fa-star"></i> Why Choose LuxeSpaces
+  </h2>
+  <p>Discover what makes us the preferred choice for interior design excellence</p>
+</div>
+
         <div className="features-grid">
           {features.map((feature, index) => (
             <div key={index} className="feature-item">

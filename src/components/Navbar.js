@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { FaTimes, FaBars } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { FaHome, FaProjectDiagram, FaServicestack, FaPhone, FaInfoCircle } from "react-icons/fa";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,27 +19,51 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className='nav'>
-      <div className={`nav-container ${scrolled ? "scrolled" : ""}`}>
-        <div className='logo-and-icon'>
-          <Link to="/home" className="interior-logo">
-            <span className="logo-mark">LS</span>
-            <span className="logo-name">LuxeSpaces</span>
-          </Link>
-          <div className='hamburger-icon' onClick={toggleMenu}>
-            {menuOpen ? <FaTimes /> : <FaBars />}
+    <>
+      {/* ✅ Desktop Navbar */}
+      <div className="nav desktop-nav">
+        <div className={`nav-container ${scrolled ? "scrolled" : ""}`}>
+          <div className="logo-and-icon">
+            <Link to="/home" className="interior-logo">
+              <span className="logo-mark">LS</span>
+              <span className="logo-name">LuxeSpaces</span>
+            </Link>
           </div>
-        </div>
 
-        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          <li><Link to="/" onClick={closeMenu}>Home</Link></li>
-          <li><Link to="/project2" onClick={closeMenu}>Projects</Link></li>
-          <li><Link to="/services" onClick={closeMenu}>Services</Link></li>
-          <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
-          <li><Link to="/about" onClick={closeMenu}>About</Link></li>
-        </ul>
+          <ul className="nav-links">
+            <li><Link to="/" className={location.pathname === "/" ? "active" : ""}>Home</Link></li>
+            <li><Link to="/project2" className={location.pathname === "/project2" ? "active" : ""}>Projects</Link></li>
+            <li><Link to="/services" className={location.pathname === "/services" ? "active" : ""}>Services</Link></li>
+            <li><Link to="/contact" className={location.pathname === "/contact" ? "active" : ""}>Contact</Link></li>
+            <li><Link to="/about" className={location.pathname === "/about" ? "active" : ""}>About</Link></li>
+          </ul>
+        </div>
       </div>
-    </div>
+
+      {/* ✅ Mobile Bottom Navbar */}
+      <div className="mobile-bottom-nav">
+        <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+          <FaHome />
+          <span>Home</span>
+        </Link>
+        <Link to="/project2" className={location.pathname === "/project2" ? "active" : ""}>
+          <FaProjectDiagram />
+          <span>Projects</span>
+        </Link>
+        <Link to="/services" className={location.pathname === "/services" ? "active" : ""}>
+          <FaServicestack />
+          <span>Services</span>
+        </Link>
+        <Link to="/contact" className={location.pathname === "/contact" ? "active" : ""}>
+          <FaPhone />
+          <span>Contact</span>
+        </Link>
+        <Link to="/about" className={location.pathname === "/about" ? "active" : ""}>
+          <FaInfoCircle />
+          <span>About</span>
+        </Link>
+      </div>
+    </>
   );
 };
 

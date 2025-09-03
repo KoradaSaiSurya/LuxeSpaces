@@ -184,24 +184,27 @@ const Home = () => {
     <div>
       <Navbar />
      <div className="home-container">
-       <video
-          className="home-intro-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src="/images/new-intro.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video> 
+  <video
+    className="home-intro-video"
+    autoPlay
+    muted
+    loop
+    playsInline
+  >
+    <source src="/images/new-intro.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video> 
 
-        <div className="overlay" />
-        <div className="video-text">
-          <h1>Transforming Spaces into Masterpieces</h1>
-          <p>Modern | Elegant | Minimalist</p>
-         <li> <a href="/projects" > Explore Our Projects </a> </li>
-        </div>
-      </div> 
+  
+
+  <div className="overlay" />
+  <div className="video-text">
+    <h1>Transforming Spaces into Masterpieces</h1>
+    <p>Modern | Elegant | Minimalist</p>
+    <li><a href="/contact">Get in Touch With Us</a></li>
+  </div>
+</div>
+ 
 
 
 
