@@ -191,7 +191,7 @@ const Home = () => {
     loop
     playsInline
   >
-    <source src="/images/new-intro.mp4" type="video/mp4" />
+    <source src="/images/home-intro.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video> 
 
