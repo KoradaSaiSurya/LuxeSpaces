@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
     "axios": "^1.11.0",
+    "browser-image-compression": "^2.0.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "firebase": "^12.2.1",

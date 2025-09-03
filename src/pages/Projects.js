@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ navigation
+import { useNavigate } from "react-router-dom";
+import imageCompression from "browser-image-compression"; // ✅ for compression
 
 function Projects() {
   const [projects, setProjects] = useState([]);
@@ -8,9 +9,19 @@ function Projects() {
   const [price, setPrice] = useState("");
   const [content, setContent] = useState("");
   const [lightbox, setLightbox] = useState({ open: false, imgUrl: "" });
+  const [loading, setLoading] = useState(false); // ✅ loader state
 
   const BACKEND_URL = "https://interior-backend-1.onrender.com";
-  const navigate = useNavigate(); // ✅ navigation hook
+  const navigate = useNavigate();
+
+  // ✅ show toast alerts
+  const showAlert = (message, type = "success") => {
+    const alertBox = document.createElement("div");
+    alertBox.className = type === "success" ? "alert-success" : "alert-error";
+    alertBox.textContent = message;
+    document.body.appendChild(alertBox);
+    setTimeout(() => alertBox.remove(), 3000);
+  };
 
   // ✅ Fetch projects
   useEffect(() => {
@@ -23,15 +34,21 @@ function Projects() {
   // ✅ Upload
   const handleUpload = async (e) => {
     e.preventDefault();
-    if (!file) return alert("Please select a file");
+    if (!file) return showAlert("Please select a file", "error");
 
-    const formData = new FormData();
-    formData.append("image", file);
-    formData.append("title", title);
-    formData.append("price", Number(price));
-    formData.append("content", content);
+    setLoading(true); // show loader
 
     try {
+      // ✅ compress image before upload
+      const options = { maxSizeMB: 1, maxWidthOrHeight: 1024 };
+      const compressedFile = await imageCompression(file, options);
+
+      const formData = new FormData();
+      formData.append("image", compressedFile);
+      formData.append("title", title);
+      formData.append("price", Number(price));
+      formData.append("content", content);
+
       const res = await fetch(`${BACKEND_URL}/api/projects`, {
         method: "POST",
         body: formData,
@@ -39,7 +56,8 @@ function Projects() {
 
       if (!res.ok) {
         const errData = await res.json();
-        alert("Upload failed: " + errData.message);
+        showAlert("❌ Upload failed: " + errData.message, "error");
+        setLoading(false);
         return;
       }
 
@@ -51,9 +69,12 @@ function Projects() {
       setTitle("");
       setPrice("");
       setContent("");
+      showAlert("✅ Project uploaded successfully!", "success");
     } catch (err) {
       console.log(err);
-      alert("Upload failed: " + err.message);
+      showAlert("❌ Upload failed: " + err.message, "error");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,9 +85,10 @@ function Projects() {
         method: "DELETE",
       });
       setProjects(projects.filter((p) => p._id !== id));
+      showAlert("🗑️ Project deleted", "success");
     } catch (err) {
       console.log(err);
-      alert("Delete failed");
+      showAlert("❌ Delete failed", "error");
     }
   };
 
@@ -76,10 +98,18 @@ function Projects() {
 
   return (
     <div className="projects-container">
+      {/* Loader */}
+      {loading && (
+        <div className="loader-overlay">
+          <div className="loader"></div>
+          <p>Uploading, please wait...</p>
+        </div>
+      )}
+
       {/* Heading + Back Button */}
       <div className="header-row">
         <button className="back-btn" onClick={() => navigate("/project2")}>
-          ⤶ 
+          ⤶
         </button>
         <h1 className="main-heading">✨ Add Projects ✨</h1>
       </div>
@@ -101,10 +131,7 @@ function Projects() {
               <div className="product-price">₹{p.price.toLocaleString()}</div>
 
               {/* Delete Button */}
-              <button
-                className="luxe-btn"
-                onClick={() => handleDelete(p._id)}
-              >
+              <button className="luxe-btn" onClick={() => handleDelete(p._id)}>
                 Luxe Spaces
               </button>
             </div>
@@ -116,11 +143,7 @@ function Projects() {
       {lightbox.open && (
         <div className="modal-overlay" onClick={closeLightbox}>
           <div className="modal-image-box">
-            <img
-              src={lightbox.imgUrl}
-              alt="Project"
-              onClick={closeLightbox}
-            />
+            <img src={lightbox.imgUrl} alt="Project" onClick={closeLightbox} />
           </div>
         </div>
       )}

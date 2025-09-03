@@ -87,6 +87,7 @@ function Project2() {
   const [lightbox, setLightbox] = useState({ open: false, imgUrl: "" });
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(true); // ✅ skeleton loading
 
   const BACKEND_URL = "https://interior-backend-1.onrender.com";
   const SECRET_PASSWORD = "admin123"; // ✅ password
@@ -95,8 +96,14 @@ function Project2() {
   useEffect(() => {
     fetch(`${BACKEND_URL}/api/projects`)
       .then((res) => res.json())
-      .then((data) => setProjects(data))
-      .catch((err) => console.log(err));
+      .then((data) => {
+        setProjects(data);
+        setLoading(false); // ✅ stop skeleton when data loads
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
   }, []);
 
   const openLightbox = (imgUrl) => setLightbox({ open: true, imgUrl });
@@ -119,29 +126,54 @@ function Project2() {
   return (
     <div className="projects-container">
       <h1 className="main-heading">✨ Our Projects ✨</h1>
-      <p className="project-p"> Discover our finest interior designs crafted with passion.
-Each project blends creativity, comfort, and modern elegance.
-We turn your dream spaces into a beautiful reality.</p>
+      <p className="project-p">
+        Discover our finest interior designs crafted with passion.
+        Each project blends creativity, comfort, and modern elegance.
+        We turn your dream spaces into a beautiful reality.
+      </p>
 
       {/* Projects Grid */}
       <div className="projects-grid">
-        {projects.map((p) => (
-          <div key={p._id} className="product-card">
-            <div
-              className="product-image"
-              onClick={() => openLightbox(p.imageUrl)}
-            >
-              <img src={p.imageUrl} alt={p.title} />
+        {/* ✅ Skeleton Loader */}
+        {loading &&
+          [...Array(6)].map((_, i) => (
+            <div key={i} className="product-card">
+              <div className="skeleton" />
+              <div className="skeleton" style={{ height: "20px", margin: "10px 0" }} />
+              <div className="skeleton" style={{ height: "15px", width: "80%" }} />
             </div>
-            <div className="product-details">
-              <p className="product-title">{p.title}</p>
-              <p className="product-desc">{p.content}</p>
-              <div className="product-rating">⭐⭐⭐⭐⭐</div>
-              <div className="product-price">₹{p.price.toLocaleString()}</div>
-              <button className="luxe-btn">Luxe Spaces</button>
+          ))}
+
+        {!loading &&
+          projects.map((p) => (
+            <div key={p._id} className="product-card">
+              <div
+                className="product-image"
+                onClick={() =>
+                  openLightbox(
+                    p.imageUrl.replace("/upload/", "/upload/f_auto,q_auto,w_900/")
+                  )
+                }
+              >
+                {/* ✅ Optimized + Lazy Loading */}
+                <img
+                  src={p.imageUrl.replace(
+                    "/upload/",
+                    "/upload/f_auto,q_auto,w_600/"
+                  )}
+                  alt={p.title}
+                  loading="lazy"
+                />
+              </div>
+              <div className="product-details">
+                <p className="product-title">{p.title}</p>
+                <p className="product-desc">{p.content}</p>
+                <div className="product-rating">⭐⭐⭐⭐⭐</div>
+                <div className="product-price">₹{p.price.toLocaleString()}</div>
+                <button className="luxe-btn">Luxe Spaces</button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
 
         {/* + Symbol Card with password */}
         <div className="product-card add-card" onClick={handlePlusClick}>
@@ -153,11 +185,7 @@ We turn your dream spaces into a beautiful reality.</p>
       {lightbox.open && (
         <div className="modal-overlay" onClick={closeLightbox}>
           <div className="modal-image-box">
-            <img
-              src={lightbox.imgUrl}
-              alt="Project"
-              onClick={closeLightbox}
-            />
+            <img src={lightbox.imgUrl} alt="Project" onClick={closeLightbox} />
           </div>
         </div>
       )}
@@ -166,7 +194,9 @@ We turn your dream spaces into a beautiful reality.</p>
       {showPasswordModal && (
         <div
           className="modal-overlay"
-          onClick={(e) => e.target === e.currentTarget && setShowPasswordModal(false)}
+          onClick={(e) =>
+            e.target === e.currentTarget && setShowPasswordModal(false)
+          }
         >
           <div className="modal-content">
             <h3>🔐 Enter Admin Password</h3>
