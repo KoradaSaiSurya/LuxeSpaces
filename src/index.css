@@ -29,12 +29,12 @@ body {
 
 /* Default glass effect */
 .nav-container {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #ffffff29;
+  background: #ffffff9c;
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 14px;
@@ -47,20 +47,6 @@ body {
 /* Scroll effect → White navbar */
 
 
-/* 🔗 Scroll ayyaka → text black */
-.nav-links li a {
-  background: none;
-  -webkit-background-clip: initial;
-  color: #ff5500d3  !important;
-  transition: 0.3s;
-}
-
-.nav-links li a:hover {
- background: linear-gradient(to right, gold, orange);
-  -webkit-background-clip: text;
-  color: transparent;
-  transform: scale(1.05);
-}
 
 
 /* Logo */
@@ -108,8 +94,9 @@ body {
   position: relative;
   text-decoration: none;
   font-size: 18px; /* optional: ekkada 30px kavali ante change cheyyi */
-  font-weight: 700;
-  background: linear-gradient(to right, #ff5500, #ffa500);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 550;
+  background: linear-gradient(to right, #ff5500, #ff5500);
   color: transparent;
   -webkit-background-clip: text;
   letter-spacing: 1px;
@@ -117,6 +104,7 @@ body {
   filter: brightness(1.35);
   display: flex;
   align-items: center;
+  
 }
 
 /* Hover → gradient aithe bright avvali */
@@ -153,6 +141,39 @@ body {
 .hamburger-icon:hover {
   transform: scale(1.1);
 }
+
+
+
+.nav-contact li {
+  list-style: none;
+}
+
+.nav-contact li a {
+  display: inline-block;
+  padding: 4px 15px;
+    background: linear-gradient(to right, #ff5500, #ffa500);
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  /* top: 30px; */
+}
+
+.nav-contact li a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(230, 229, 228, 0.6);
+   background: #ffa500;
+}
+
+
+
+
+
+
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -290,51 +311,50 @@ body {
   
 }
 
-
 .video-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
   text-align: center;
+  color: #fff;
   z-index: 2;
 }
 
 .video-text h1 {
-  font-size: 45px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 70px;
+  font-family: 'Playfair Display', serif;
 }
 
 .video-text p {
-  font-size: 18px;
-  letter-spacing: 2px;
+  font-size: 48px;
+  font-family: Georgia, 'Times New Roman', serif;
   margin-bottom: 20px;
 }
 
-.video-text li{
+.video-text li {
   list-style: none;
 }
 
 .video-text li a {
   display: inline-block;
-  padding: 8px 20px;   /* ✅ size decrease */
-  background: linear-gradient(90deg, #ff5500, #ffa500);
+  padding: 12px 26px;
+  background: #3b2417;
   color: #fff;
-  font-weight: 600;
-  font-size: 0.9rem;   /* ✅ text size kuda konchem small */
-  border-radius: 25px;
+  font-size: 1rem;
+  border-radius: 10px;
   text-decoration: none;
   transition: 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  top: 30px;
 }
 
 .video-text li a:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(255, 85, 0, 0.6); /* ✅ shadow kuda soft */
-  background-color: orange;
+  box-shadow: 0 0 12px rgba(230, 229, 228, 0.6);
+   background: #6b4731;
 }
-
 
 
 
@@ -365,47 +385,31 @@ body {
 }
 
 .video-text h1 {
-  font-size: 33px;
-  font-weight: bold;
+  font-size: 50px;
+  /* font-weight: bold; */
   margin-bottom: 10px;
+  position: relative;
+  top:  -70px;
 }
 
 .video-text p {
-  font-size: 14px;
+  font-size: 28px;
   letter-spacing: 2px;
   margin-bottom: 20px;
+  position: relative;
+  top: -70px;
+  /* margin: -10px; */
 }
 
 .video-text li {
   list-style: none;
-  margin-top: 18px; /* konchem takkuva gap */
+  position: relative;
+  top: -20px;
 }
 
 .video-text li a {
-  display: inline-block;
-  padding: 8px 20px;   /* ✅ size decrease */
-  background: linear-gradient(90deg, #ff5500, #ffa500);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.9rem;   /* ✅ text size kuda konchem small */
-  border-radius: 25px;
-  text-decoration: none;
-  transition: 0.3s ease;
+ margin: -10px;
 }
-
-.video-text li a:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(255, 85, 0, 0.6); /* ✅ shadow kuda soft */
-  background-color: orange;
-}
-
-
-
-
-
-
-
-
 }
 
 

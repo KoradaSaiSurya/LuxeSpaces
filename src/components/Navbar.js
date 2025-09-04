@@ -37,6 +37,19 @@ const Navbar = () => {
             <li><Link to="/contact" className={location.pathname === "/contact" ? "active" : ""}>Contact</Link></li>
             <li><Link to="/about" className={location.pathname === "/about" ? "active" : ""}>About</Link></li>
           </ul>
+
+         <div className="nav-contact">
+          <li>
+            <Link
+              to="/contact"
+              className={location.pathname === "/contact" ? "active" : ""}
+            >
+              Contact <FaPhone style={{ marginLeft: "10px" }} /> 
+ 
+            </Link>
+          </li>
+        </div>
+
         </div>
       </div>
 
