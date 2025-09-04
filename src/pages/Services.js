@@ -91,10 +91,7 @@
 // const Services = () => {
 //   return (
 //     <section id="services" className="page-section">
-//       <h2>Our Services</h2>
-//       <div className="services-grid">
-//         {servicesData.map((service, index) => (
-//           <div key={index} className="service-card">
+//       <h2>Our Services</h2>    <div key={index} className="service-card">
 //             <h3>{service.title}</h3>
 //             <p>{service.description}</p>
 //           </div>

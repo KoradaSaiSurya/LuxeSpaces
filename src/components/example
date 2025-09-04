@@ -438,7 +438,7 @@
 //               required
 //             />
 //           </div>
-//           {/* <div className="form-group">
+//           <div className="form-group">
 //             <input
 //               type="text"
 //               placeholder="Title"
@@ -446,7 +446,7 @@
 //               onChange={(e) => setTitle(e.target.value)}
 //               required
 //             />
-//           </div> */}
+//           </div>
           
 //           <div className="form-group">
 //             <input

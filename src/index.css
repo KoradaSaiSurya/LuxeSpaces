@@ -277,18 +277,16 @@ body {
 
 
 
-.home-intro-video{
+.home-intro-video {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   object-fit: cover;
-  position: absolute;
+  position: absolute;   /* ✅ only absolute undali */
   top: 0;
   left: 0;
-   position: relative;
-  height: 100vh; 
-  overflow: hidden;
-  
+  z-index: 1;
 }
+
 
 
 .video-text {
