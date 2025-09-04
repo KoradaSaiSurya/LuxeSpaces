@@ -90,7 +90,7 @@ function Project2() {
   const [loading, setLoading] = useState(true); // ✅ skeleton loading
 
   const BACKEND_URL = "https://interior-backend-1.onrender.com";
-  const SECRET_PASSWORD = "admin123"; // ✅ password
+  const SECRET_PASSWORD = "surya2003"; // ✅ password
   const navigate = useNavigate();
 
   useEffect(() => {

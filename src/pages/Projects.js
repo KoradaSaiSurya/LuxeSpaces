@@ -131,9 +131,10 @@ function Projects() {
               <div className="product-price">₹{p.price.toLocaleString()}</div>
 
               {/* Delete Button */}
-              <button className="luxe-btn" onClick={() => handleDelete(p._id)}>
-                Luxe Spaces
-              </button>
+             <button className="luxe-btn" onClick={() => handleDelete(p._id)}>
+              <i className="fas fa-trash"></i> Delete
+             </button>
+
             </div>
           </div>
         ))}
