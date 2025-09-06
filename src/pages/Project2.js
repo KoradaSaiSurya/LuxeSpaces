@@ -81,6 +81,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import SEO from "../components/SEO";
 
 function Project2() {
   const [projects, setProjects] = useState([]);
@@ -124,6 +125,14 @@ function Project2() {
   };
 
   return (
+     <>
+      <SEO
+        title="Project Details - LuxeSpaces"
+        description="Detailed look at one of LuxeSpaces premium interior design projects."
+        image="https://luxe-spaces.vercel.app/images/project2-hero.jpg"
+        keywords="LuxeSpaces project, interior design project, home interior ideas"
+      />
+
     <div className="projects-container">
       <h1 className="main-heading">✨ Our Projects ✨</h1>
       <p className="project-p">
@@ -221,6 +230,7 @@ function Project2() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

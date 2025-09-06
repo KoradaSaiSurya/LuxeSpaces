@@ -1,8 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import imageCompression from "browser-image-compression"; // ✅ for compression
+import SEO from "../components/SEO";
 
-function Projects() {
+function Projects({project}) {
+
+     const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.description,
+    url: `https://luxe-spaces.vercel.app/projects/${project.slug}`,
+    image: [project.image],
+    datePublished: project.createdAt,
+    dateModified: project.updatedAt,
+  };
+
+
   const [projects, setProjects] = useState([]);
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState("");
@@ -97,6 +111,16 @@ function Projects() {
   const closeLightbox = () => setLightbox({ open: false, imgUrl: "" });
 
   return (
+    <> 
+
+       <SEO
+        title={project.title}
+        description={project.description}
+        image={project.image}
+        schema={projectSchema}
+      />
+
+
     <div className="projects-container">
       {/* Loader */}
       {loading && (
@@ -196,6 +220,7 @@ function Projects() {
         </button>
       </form>
     </div>
+    </>
   );
 }
 

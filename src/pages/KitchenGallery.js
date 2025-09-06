@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SEO from '../components/SEO';
 
 const kitchenItems = [
   {
@@ -55,6 +56,15 @@ const KitchenGallery = () => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   return (
+
+    <>
+      <SEO
+        title="Kitchen Designs - LuxeSpaces"
+        description="Get inspired by LuxeSpaces modern and functional kitchen designs."
+        image="https://luxe-spaces.vercel.app/images/kitchen-hero.jpg"
+        keywords="kitchen design, LuxeSpaces kitchen, modern kitchen interiors"
+      />
+
     <div className="kitchen-gallery">
       <h1>Kitchen Designs</h1>
       <p> Modern kitchens that blend functionality, style, and lasting comfort.</p>
@@ -97,6 +107,7 @@ const KitchenGallery = () => {
 
       
     </div>
+    </>
   );
 };
 

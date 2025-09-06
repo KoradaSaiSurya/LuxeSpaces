@@ -7,11 +7,26 @@ import WhyChoose from './WhyChoose'
 import Services from './Services'
 import About from './About'
 import Project2 from './Project2'
+import SEO from '../components/SEO'
 
 const Home = () => {
 
   return (
+    <>
+
+    
+       {/* SEO meta tags */}
+      <SEO
+        title="Home"
+        description="LuxeSpaces — Best interior designers for living rooms, bedrooms, and kitchens."
+        image="https://luxe-spaces.vercel.app/images/home-hero.jpg"
+        keywords="interior designers, home interiors, LuxeSpaces"
+      />
+
     <div>
+
+
+
       <Navbar />
      <div className="home-container">
   
@@ -47,6 +62,7 @@ const Home = () => {
     
 
     </div>
+    </>
   )
 }
 

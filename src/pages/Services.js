@@ -108,6 +108,7 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const Services = () => {
   const navigate = useNavigate();
@@ -152,6 +153,14 @@ const Services = () => {
   ];
 
   return (
+     <>
+      <SEO
+        title="Our Services - LuxeSpaces"
+        description="Explore LuxeSpaces premium interior design services including living rooms, kitchens, bedrooms, and more."
+        image="https://luxe-spaces.vercel.app/images/services-hero.jpg"
+        keywords="LuxeSpaces services, interior design services, home design"
+      />
+
     <section className="page-section active">
       <div className="container">
         <div className="section-header">
@@ -179,6 +188,7 @@ const Services = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

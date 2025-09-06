@@ -1,7 +1,17 @@
 import React from 'react';
+import SEO from '../components/SEO';
 
 const About = () => {
   return (
+    <>   
+     <SEO
+        title="About Us"
+        description="Learn more about LuxeSpaces interior design services and our expert designers."
+        image="https://luxe-spaces.vercel.app/images/about-hero.jpg"
+        keywords="about LuxeSpaces, interior design team, LuxeSpaces designers"
+      />
+
+
     <div className="about-section">
       <div className="about-container">
         <h1 className="about-title">About Us</h1>
@@ -45,6 +55,7 @@ const About = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

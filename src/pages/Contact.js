@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -51,6 +52,13 @@ const Contact = () => {
   ];
 
   return (
+     <>
+      <SEO
+        title="Contact Us"
+        description="Get in touch with LuxeSpaces for your dream interior projects."
+        image="https://luxe-spaces.vercel.app/images/contact-hero.jpg"
+        keywords="contact LuxeSpaces, interior designers contact, LuxeSpaces phone email"
+      />
     <section className="page-section active">
       <div className="container">
         <div className="section-header">
@@ -112,6 +120,7 @@ const Contact = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

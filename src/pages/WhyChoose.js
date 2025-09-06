@@ -31,6 +31,7 @@
 
 
 import React from 'react';
+import SEO from '../components/SEO';
 
 const WhyChoose = () => {
   const features = [
@@ -67,6 +68,14 @@ const WhyChoose = () => {
   ];
 
   return (
+    <>
+      <SEO
+        title="Why Choose LuxeSpaces"
+        description="Learn why LuxeSpaces is the top choice for premium interior design services."
+        image="https://luxe-spaces.vercel.app/images/whychooseus-hero.jpg"
+        keywords="why choose LuxeSpaces, interior design experts, top interior designers"
+      />
+
     <section className="page-section active">
       <div className="container">
         <div className="section-header">
@@ -89,6 +98,7 @@ const WhyChoose = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
