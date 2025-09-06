@@ -7,12 +7,11 @@ import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import projectRoutes from "./routes/projectRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
+import sitemapRoutes from "./routes/sitemapRoutes.js";
+
 
 // ✅ Load environment variables
 dotenv.config();
-
-
-const sitemapRoutes = require("./routes/sitemapRoutes");
 
 
 const app = express();

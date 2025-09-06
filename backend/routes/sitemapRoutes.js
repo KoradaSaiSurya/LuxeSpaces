@@ -1,8 +1,8 @@
 // backend/routes/sitemapRoutes.js
-const express = require("express");
-const router = express.Router();
-const Project = require("../models/Project"); // adjust if your model is different
+import express from "express";
+import Project from "../models/Project.js"; // ⚠️ .js extension in ESM
 
+const router = express.Router();
 const SITE_URL = process.env.SITE_URL || "https://luxe-spaces.vercel.app";
 
 router.get("/sitemap.xml", async (req, res) => {
@@ -51,4 +51,4 @@ router.get("/sitemap.xml", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router; // ✅ default export for ES Module
