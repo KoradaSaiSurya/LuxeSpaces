@@ -80,6 +80,8 @@
 // export default App;
 
 import React, { useState, useEffect } from 'react';
+
+import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -173,6 +175,7 @@ function App() {
   };
 
   return (
+       <HelmetProvider>     
     <Router>
       <Navbar />
 
@@ -209,6 +212,7 @@ function App() {
 
       <Footer />
     </Router>
+    </HelmetProvider>
   );
 }
 
