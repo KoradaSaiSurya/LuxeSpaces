@@ -59,10 +59,10 @@ const KitchenGallery = () => {
 
     <>
       <SEO
-        title="Kitchen Designs - LuxeSpaces"
+        title="Kitchen Designs - LuxeSpaces | kitchen designs tuni  "
         description="Get inspired by LuxeSpaces modern and functional kitchen designs."
         image="https://luxe-spaces.vercel.app/images/kitchen-hero.jpg"
-        keywords="kitchen design, LuxeSpaces kitchen, modern kitchen interiors"
+        keywords="kitchen design tuni, LuxeSpaces kitchen, modern kitchen interiors"
       />
 
     <div className="kitchen-gallery">

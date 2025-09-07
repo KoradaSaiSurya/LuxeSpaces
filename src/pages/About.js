@@ -5,11 +5,12 @@ const About = () => {
   return (
     <>   
      <SEO
-        title="About Us"
-        description="Learn more about LuxeSpaces interior design services and our expert designers."
+        title="About LuxeSpaces - Best Interior Designers in Tuni"
+        description="Know more about LuxeSpaces, the top interior design company in Tuni. We create stylish interiors for homes and offices."
         image="https://luxe-spaces.vercel.app/images/about-hero.jpg"
-        keywords="about LuxeSpaces, interior design team, LuxeSpaces designers"
+        keywords="About LuxeSpaces, Interior Designers Tuni, LuxeSpaces Tuni Interiors"
       />
+
 
 
     <div className="about-section">

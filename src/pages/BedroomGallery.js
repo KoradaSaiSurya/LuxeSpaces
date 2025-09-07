@@ -58,10 +58,10 @@ const BedroomGallery = () => {
   return (
     <>
       <SEO
-        title="Bedroom Designs - LuxeSpaces"
+        title="Bedroom Designs - LuxeSpaces | bedroom designs tuni"
         description="Discover LuxeSpaces cozy and elegant bedroom interior designs."
         image="https://luxe-spaces.vercel.app/images/bedroom-hero.jpg"
-        keywords="bedroom design, LuxeSpaces bedroom, interior design bedroom"
+        keywords="bedroom design tuni , LuxeSpaces bedroom, interior design bedroom"
       />
 
     <div className="kitchen-gallery">

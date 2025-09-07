@@ -155,10 +155,10 @@ const Services = () => {
   return (
      <>
       <SEO
-        title="Our Services - LuxeSpaces"
+        title="Our Services - LuxeSpaces | Interior Design Services in Tuni | LuxeSpaces"
         description="Explore LuxeSpaces premium interior design services including living rooms, kitchens, bedrooms, and more."
         image="https://luxe-spaces.vercel.app/images/services-hero.jpg"
-        keywords="LuxeSpaces services, interior design services, home design"
+        keywords="LuxeSpaces services tuni, interior design services tuni, home design tuni"
       />
 
     <section className="page-section active">

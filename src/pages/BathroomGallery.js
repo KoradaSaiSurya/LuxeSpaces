@@ -73,10 +73,10 @@ const BathroomGallery = () => {
   return (
      <>
       <SEO
-        title="Bathroom Designs - LuxeSpaces"
+        title="Bathroom Designs - LuxeSpaces |bathroom designs tuni"
         description="Explore LuxeSpaces stylish and modern bathroom interior designs."
         image="https://luxe-spaces.vercel.app/images/bathroom-hero.jpg"
-        keywords="bathroom design, LuxeSpaces bathroom, modern bathroom interiors"
+        keywords="bathroom design tuni, LuxeSpaces bathroom, modern bathroom interiors"
       />
 
     <div className="kitchen-gallery">

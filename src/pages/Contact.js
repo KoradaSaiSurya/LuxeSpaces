@@ -54,7 +54,7 @@ const Contact = () => {
   return (
      <>
       <SEO
-        title="Contact Us"
+        title="Contact LuxeSpaces - Interior Designers in Tuni | contact us"
         description="Get in touch with LuxeSpaces for your dream interior projects."
         image="https://luxe-spaces.vercel.app/images/contact-hero.jpg"
         keywords="contact LuxeSpaces, interior designers contact, LuxeSpaces phone email"

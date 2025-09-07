@@ -73,10 +73,10 @@ const LivingroomGallery = () => {
   return (
      <>
       <SEO
-        title="Living Room Designs - LuxeSpaces"
+        title="Living Room Designs - LuxeSpaces | Livingroom design tuni"
         description="Explore LuxeSpaces stylish and comfortable living room interior designs."
         image="https://luxe-spaces.vercel.app/images/livingroom-hero.jpg"
-        keywords="living room design, LuxeSpaces living room, home interiors"
+        keywords="living room design tuni, LuxeSpaces living room, home interiors"
       />
 
     <div className="kitchen-gallery">

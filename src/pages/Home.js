@@ -17,10 +17,10 @@ const Home = () => {
     
        {/* SEO meta tags */}
       <SEO
-        title="Home"
+        title="LuxeSpaces - Best Interiors in Tuni"
         description="LuxeSpaces — Best interior designers for living rooms, bedrooms, and kitchens."
         image="https://luxe-spaces.vercel.app/images/home-hero.jpg"
-        keywords="interior designers, home interiors, LuxeSpaces"
+        keywords="interior designers tuni, home interiors tuni, LuxeSpaces tuni"
       />
 
     <div>
