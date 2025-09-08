@@ -28,6 +28,35 @@ export default function SEO({
     logo: `${SITE_URL}/logo.png`,
   };
 
+
+  const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "LuxeSpaces - Interior Designers in Tuni",
+  image: `${SITE_URL}/images/og-default.jpg`,
+  "@id": SITE_URL,
+  url: SITE_URL,
+  telephone: "+91-9014481050",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Tuni, Andhra Pradesh",
+    addressLocality: "Tuni",
+    addressRegion: "AP",
+    postalCode: "533401",
+    addressCountry: "IN"
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 17.35,  // approximate
+    longitude: 82.55
+  },
+  sameAs: [
+    "https://www.facebook.com/yourpage",
+    "https://www.instagram.com/yourpage"
+  ]
+}
+
+
   return (
     <Helmet>
       <title>{metaTitle}</title>
@@ -59,8 +88,9 @@ export default function SEO({
 
       {/* JSON-LD */}
       <script type="application/ld+json">
-        {JSON.stringify(schema || defaultSchema)}
+        {JSON.stringify(schema || localBusinessSchema)}
       </script>
+
     </Helmet>
   );
 }
